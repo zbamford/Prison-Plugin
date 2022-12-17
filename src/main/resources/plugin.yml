@@ -1,0 +1,4 @@
+name: StupidPrison
+version: '${project.version}'
+main: stupidprison.stupidprison.StupidPrison
+api-version: 1.17

@@ -1,0 +1,41 @@
+teleportenabled: true
+teleportauto: false
+godmode: false
+muted: false
+jailed: false
+ip-address: 127.0.0.1
+afk: false
+socialspy: false
+npc: false
+powertoolsenabled: true
+accepting-pay: true
+baltop-exempt: false
+timestamps:
+  lastteleport: 1671250455850
+  lastheal: 0
+  mute: 0
+  jail: 0
+  onlinejail: 0
+  logout: 1671260759233
+  login: 1671251855695
+  kits:
+    dtools: 1671224919677
+money: '745000.0'
+last-account-name: iiPvPu
+logoutlocation:
+  world: 68923de3-6859-41c7-94e7-6a11a76c2a33
+  world-name: world
+  x: 28.001239163563348
+  y: 36.0
+  z: -71.82478934681028
+  yaw: 62.155975341796875
+  pitch: -2.8918464183807373
+nickname: fortnite
+lastlocation:
+  world: 68923de3-6859-41c7-94e7-6a11a76c2a33
+  world-name: world
+  x: 27.11608504906268
+  y: 34.0
+  z: -62.947279615026275
+  yaw: 87.04737091064453
+  pitch: 28.595731735229492
