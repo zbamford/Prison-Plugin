@@ -16,20 +16,20 @@ timestamps:
   mute: 0
   jail: 0
   onlinejail: 0
-  logout: 1671260759233
-  login: 1671251855695
+  logout: 1671508580649
+  login: 1671508654520
   kits:
     dtools: 1671224919677
-money: '745000.0'
+money: '5307032.4185248578734920'
 last-account-name: iiPvPu
 logoutlocation:
   world: 68923de3-6859-41c7-94e7-6a11a76c2a33
   world-name: world
-  x: 28.001239163563348
+  x: 38.2193875514787
   y: 36.0
-  z: -71.82478934681028
-  yaw: 62.155975341796875
-  pitch: -2.8918464183807373
+  z: -77.56221324168699
+  yaw: 18.300048828125
+  pitch: 13.049986839294434
 nickname: fortnite
 lastlocation:
   world: 68923de3-6859-41c7-94e7-6a11a76c2a33

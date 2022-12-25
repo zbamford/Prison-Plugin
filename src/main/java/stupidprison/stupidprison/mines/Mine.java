@@ -10,12 +10,10 @@ import stupidprison.stupidprison.StupidPrison;
 public class Mine {
 
     private RangeMap<Integer, Material> materials;
-    private World world;
     private int[] pos1, pos2;
 
-    public Mine(RangeMap<Integer, Material> materials, World world, int[] pos1, int[] pos2) {
+    public Mine(RangeMap<Integer, Material> materials, int[] pos1, int[] pos2) {
         this.materials = materials;
-        this.world = world;
         this.pos1 = pos1;
         this.pos2 = pos2;
     }

@@ -7,6 +7,8 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import stupidprison.stupidprison.StupidPrison;
 
+import static org.bukkit.Bukkit.getServer;
+
 public class MineBuilder {
 
     private RangeMap<Integer, Material> materials;
@@ -16,6 +18,7 @@ public class MineBuilder {
 
     public MineBuilder() {
         materials = TreeRangeMap.create();
+        world = getServer().getWorld("world");
         start = 0;
         end = 0;
     }

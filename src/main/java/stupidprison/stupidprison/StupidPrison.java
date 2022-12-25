@@ -15,6 +15,7 @@ import stupidprison.stupidprison.util.Configuration;
 import stupidprison.stupidprison.util.DelayedTask;
 
 import static stupidprison.stupidprison.Globals.econ;
+import static stupidprison.stupidprison.Globals.materials;
 
 public class StupidPrison extends JavaPlugin {
 
@@ -25,6 +26,7 @@ public class StupidPrison extends JavaPlugin {
         Bukkit.getLogger().info("hello world!!");
 
         Globals.plugin = this;
+        Globals.world = getServer().getWorld("world");
 
         saveDefaultConfig();
 
@@ -37,12 +39,41 @@ public class StupidPrison extends JavaPlugin {
 
         new DelayedTask(this);
 
-        new MineSetup();
+        new MineSetup(0, 10, 0, 5, 5, 5, 5, 5);
 
         if (!setupEconomy()) {
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
+
+        materials.add(Material.STONE);                  // Tutorial
+        materials.add(Material.COAL_ORE);               // A
+        materials.add(Material.DEEPSLATE_COAL_ORE);     // B
+        materials.add(Material.COAL_BLOCK);             // C
+        materials.add(Material.COPPER_ORE);             // D
+        materials.add(Material.DEEPSLATE_COPPER_ORE);   // E
+        materials.add(Material.COPPER_BLOCK);           // F
+        materials.add(Material.IRON_ORE);               // G
+        materials.add(Material.DEEPSLATE_IRON_ORE);     // H
+        materials.add(Material.IRON_BLOCK);             // I
+        materials.add(Material.REDSTONE_ORE);           // J
+        materials.add(Material.DEEPSLATE_REDSTONE_ORE); // K
+        materials.add(Material.REDSTONE_BLOCK);         // L
+        materials.add(Material.LAPIS_ORE);              // M
+        materials.add(Material.DEEPSLATE_LAPIS_ORE);    // N
+        materials.add(Material.LAPIS_BLOCK);            // O
+        materials.add(Material.GOLD_ORE);               // P
+        materials.add(Material.DEEPSLATE_GOLD_ORE);     // Q
+        materials.add(Material.GOLD_BLOCK);             // R
+        materials.add(Material.DIAMOND_ORE);            // S
+        materials.add(Material.DEEPSLATE_DIAMOND_ORE);  // T
+        materials.add(Material.DIAMOND_BLOCK);          // U
+        materials.add(Material.EMERALD_ORE);            // V
+        materials.add(Material.DEEPSLATE_EMERALD_ORE);  // W
+        materials.add(Material.EMERALD_BLOCK);          // X
+        materials.add(Material.ANCIENT_DEBRIS);         // Y
+        materials.add(Material.NETHERITE_BLOCK);        // Z
+        materials.add(Material.BEACON);                 // Free
     }
 
     @Override
