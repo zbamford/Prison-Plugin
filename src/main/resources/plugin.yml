@@ -2,3 +2,13 @@ name: StupidPrison
 version: '${project.version}'
 main: stupidprison.stupidprison.StupidPrison
 api-version: 1.17
+
+commands:
+  setupmines:
+    description: Sets up mines
+    usage: /<command>
+    permission: stupidprison.setupmines
+  resetmines:
+    description: Resets all mines
+    usage: /<command>
+    permission: stupidprison.resetmines

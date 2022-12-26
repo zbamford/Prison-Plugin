@@ -147,6 +147,8 @@ public class PlayerHandler implements Listener {
         Player player = event.getPlayer();
         int fortune = player.getInventory().getItemInMainHand().getItemMeta().getEnchantLevel(Enchantment.LOOT_BONUS_BLOCKS);
         Block block = event.getBlock();
-        econ.depositPlayer(player, sellPrices.get(block.getType()) * (fortune + 1));
+        if (sellPrices.get(block.getType()) != null) {
+            econ.depositPlayer(player, sellPrices.get(block.getType()) * (fortune + 1));
+        }
     }
 }

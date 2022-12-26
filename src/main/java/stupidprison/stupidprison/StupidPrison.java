@@ -3,9 +3,11 @@ package stupidprison.stupidprison;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.command.Command;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
+import stupidprison.stupidprison.mines.CommandMineSetup;
 import stupidprison.stupidprison.mines.Mine;
 import stupidprison.stupidprison.mines.MineBuilder;
 import stupidprison.stupidprison.handlers.PlayerHandler;
@@ -13,6 +15,9 @@ import stupidprison.stupidprison.handlers.TorchHandler;
 import stupidprison.stupidprison.mines.MineSetup;
 import stupidprison.stupidprison.util.Configuration;
 import stupidprison.stupidprison.util.DelayedTask;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static stupidprison.stupidprison.Globals.econ;
 import static stupidprison.stupidprison.Globals.materials;
@@ -35,11 +40,8 @@ public class StupidPrison extends JavaPlugin {
         config.save();
 
         new TorchHandler(this);
-        new PlayerHandler(this);
 
         new DelayedTask(this);
-
-        new MineSetup(0, 10, 0, 5, 5, 5, 5, 5);
 
         if (!setupEconomy()) {
             getServer().getPluginManager().disablePlugin(this);
@@ -74,6 +76,10 @@ public class StupidPrison extends JavaPlugin {
         materials.add(Material.ANCIENT_DEBRIS);         // Y
         materials.add(Material.NETHERITE_BLOCK);        // Z
         materials.add(Material.BEACON);                 // Free
+
+        new PlayerHandler(this);
+
+        setupCommands();
     }
 
     @Override
@@ -84,10 +90,6 @@ public class StupidPrison extends JavaPlugin {
 
     public Configuration getConfiguration() {
         return config;
-    }
-
-    public static void log(String message) {
-        Bukkit.getLogger().info("[StupidPrison] " + message);
     }
 
     private boolean setupEconomy() {
@@ -101,4 +103,16 @@ public class StupidPrison extends JavaPlugin {
         econ = rsp.getProvider();
         return econ != null;
     }
+
+    private void setupCommands() {
+        List<String> commands = new ArrayList<>();
+        commands.add("setupmines");
+        commands.add("resetmines");
+
+        CommandMineSetup cms = new CommandMineSetup();
+        for (String cmd : commands) {
+            this.getCommand(cmd).setExecutor(cms);
+        }
+    }
+
 }

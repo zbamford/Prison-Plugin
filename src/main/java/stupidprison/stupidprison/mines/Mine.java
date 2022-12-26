@@ -5,7 +5,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
-import stupidprison.stupidprison.StupidPrison;
+
+import static stupidprison.stupidprison.Globals.world;
 
 public class Mine {
 
@@ -34,7 +35,11 @@ public class Mine {
     }
 
     private Material chooseMaterial() {
-        int random = (int) (Math.random() * 10000);
-        return materials.get(random);
+        Material material = null;
+        while (material == null) {
+            int random = (int) (Math.random() * 10000);
+            material = materials.get(random);
+        }
+        return material;
     }
 }

@@ -35,7 +35,7 @@ public class MineBuilder {
         start += (int) (chance * 100);
     }
 
-    public void setBoundary(int x1, int y1, int z1, int x2, int y2, int z2) {
+    public void setBoundary(int x1, int x2, int y1, int y2, int z1, int z2) {
         pos1 = new int[3];
         pos2 = new int[3];
         pos1[0] = x1 > x2 ? x2 : x1;
@@ -56,6 +56,6 @@ public class MineBuilder {
      * @return The currently created mine
      */
     public Mine getMine() {
-        return new Mine(materials, world, pos1, pos2);
+        return new Mine(materials, pos1, pos2);
     }
 }
