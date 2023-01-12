@@ -1,127 +1,19 @@
 {
   "minecraft:recipes/redstone/dispenser": {
     "criteria": {
-      "has_bow": "2022-12-26 10:44:34 -0800"
-    },
-    "done": true
-  },
-  "minecraft:recipes/building_blocks/quartz_pillar_from_quartz_block_stonecutting": {
-    "criteria": {
-      "has_quartz_block": "2022-12-26 11:15:30 -0800"
-    },
-    "done": true
-  },
-  "minecraft:recipes/building_blocks/quartz_pillar": {
-    "criteria": {
-      "has_quartz_block": "2022-12-26 11:15:30 -0800"
-    },
-    "done": true
-  },
-  "minecraft:recipes/building_blocks/quartz_stairs_from_quartz_block_stonecutting": {
-    "criteria": {
-      "has_quartz_block": "2022-12-26 11:15:30 -0800"
-    },
-    "done": true
-  },
-  "minecraft:recipes/building_blocks/smooth_quartz": {
-    "criteria": {
-      "has_quartz_block": "2022-12-26 11:15:30 -0800"
-    },
-    "done": true
-  },
-  "minecraft:recipes/decorations/chest": {
-    "criteria": {
-      "has_lots_of_items": "2022-12-26 11:36:09 -0800"
-    },
-    "done": true
-  },
-  "minecraft:adventure/kill_a_mob": {
-    "criteria": {
-      "minecraft:slime": "2022-12-26 11:36:05 -0800"
-    },
-    "done": true
-  },
-  "minecraft:recipes/building_blocks/quartz_stairs": {
-    "criteria": {
-      "has_quartz_block": "2022-12-26 11:15:30 -0800"
-    },
-    "done": true
-  },
-  "minecraft:recipes/building_blocks/quartz_slab": {
-    "criteria": {
-      "has_quartz_block": "2022-12-26 11:15:30 -0800"
-    },
-    "done": true
-  },
-  "minecraft:adventure/kill_all_mobs": {
-    "criteria": {
-      "minecraft:slime": "2022-12-26 11:36:05 -0800"
-    },
-    "done": false
-  },
-  "minecraft:recipes/building_blocks/quartz_bricks_from_quartz_block_stonecutting": {
-    "criteria": {
-      "has_quartz_block": "2022-12-26 11:15:30 -0800"
-    },
-    "done": true
-  },
-  "minecraft:recipes/building_blocks/chiseled_quartz_block_from_quartz_block_stonecutting": {
-    "criteria": {
-      "has_quartz_block": "2022-12-26 11:15:30 -0800"
-    },
-    "done": true
-  },
-  "minecraft:recipes/redstone/sticky_piston": {
-    "criteria": {
-      "has_slime_ball": "2022-12-26 11:36:09 -0800"
-    },
-    "done": true
-  },
-  "minecraft:recipes/building_blocks/quartz_bricks": {
-    "criteria": {
-      "has_quartz_block": "2022-12-26 11:15:30 -0800"
-    },
-    "done": true
-  },
-  "minecraft:adventure/root": {
-    "criteria": {
-      "killed_something": "2022-12-26 11:36:05 -0800"
-    },
-    "done": true
-  },
-  "minecraft:recipes/tools/lead": {
-    "criteria": {
-      "has_slime_ball": "2022-12-26 11:36:09 -0800"
-    },
-    "done": true
-  },
-  "minecraft:recipes/building_blocks/quartz_slab_from_stonecutting": {
-    "criteria": {
-      "has_quartz_block": "2022-12-26 11:15:30 -0800"
-    },
-    "done": true
-  },
-  "minecraft:recipes/redstone/slime_block": {
-    "criteria": {
-      "has_slime_ball": "2022-12-26 11:36:09 -0800"
+      "has_bow": "2023-01-04 12:52:59 -0800"
     },
     "done": true
   },
   "minecraft:adventure/adventuring_time": {
     "criteria": {
-      "minecraft:plains": "2022-12-26 10:44:34 -0800"
+      "minecraft:plains": "2023-01-04 12:52:59 -0800"
     },
     "done": false
   },
-  "minecraft:recipes/building_blocks/chiseled_quartz_block": {
-    "criteria": {
-      "has_quartz_block": "2022-12-26 11:15:30 -0800"
-    },
-    "done": true
-  },
   "minecraft:nether/netherite_armor": {
     "criteria": {
-      "netherite_armor": "2022-12-26 10:44:34 -0800"
+      "netherite_armor": "2023-01-04 12:52:59 -0800"
     },
     "done": true
   },

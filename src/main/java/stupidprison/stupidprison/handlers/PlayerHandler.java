@@ -9,22 +9,25 @@ import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
+import org.ipvp.canvas.Menu;
+import org.ipvp.canvas.type.ChestMenu;
 import stupidprison.stupidprison.Globals;
+import stupidprison.stupidprison.pickaxes.PickaxeSuperBasic;
+import stupidprison.stupidprison.player.PrisonPlayer;
 import stupidprison.stupidprison.util.DelayedTask;
 
 import net.milkbowl.vault.economy.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static org.bukkit.event.entity.EntityDamageEvent.DamageCause.FALL;
 import static stupidprison.stupidprison.Globals.econ;
@@ -34,10 +37,12 @@ public class PlayerHandler implements Listener {
 
     private Plugin plugin;
     private Map<Material, Double> sellPrices;
+    private Map<UUID, PrisonPlayer> players;
     public PlayerHandler(Plugin plugin) {
         Bukkit.getPluginManager().registerEvents(this, plugin);
         this.plugin = plugin;
         setupSellPrices();
+        players = new HashMap<>();
     }
 
     private void setupSellPrices() {
@@ -49,15 +54,20 @@ public class PlayerHandler implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
-        Player player = event.getPlayer();
-        if (!player.hasPlayedBefore()) {
-            ItemStack item;
-            Inventory inv;
-            ItemMeta meta;
+        Player p = event.getPlayer();
+        PrisonPlayer pp;
+        UUID id = p.getUniqueId();
+
+        ItemStack item;
+        Inventory inv = p.getInventory();
+        ItemMeta meta;
+
+        if (!p.hasPlayedBefore()) {
+            pp = new PrisonPlayer(p);
+            players.put(id, pp);
 
             // Sword
             item = new ItemStack(Material.NETHERITE_SWORD, 1);
-            inv = player.getInventory();
             meta = item.getItemMeta();
             meta.addEnchant(Enchantment.DAMAGE_ALL, 20, true);
             meta.setUnbreakable(true);
@@ -67,7 +77,6 @@ public class PlayerHandler implements Listener {
 
             // Bow
             item = new ItemStack(Material.BOW, 1);
-            inv = player.getInventory();
             meta = item.getItemMeta();
             meta.addEnchant(Enchantment.ARROW_DAMAGE, 20, true);
             meta.addEnchant(Enchantment.ARROW_INFINITE, 1, true);
@@ -78,7 +87,6 @@ public class PlayerHandler implements Listener {
 
             // Pickaxe
             item = new ItemStack(Material.NETHERITE_PICKAXE, 1);
-            inv = player.getInventory();
             meta = item.getItemMeta();
             meta.addEnchant(Enchantment.DIG_SPEED, 100, true);
             meta.setUnbreakable(true);
@@ -92,7 +100,6 @@ public class PlayerHandler implements Listener {
 
             // Helmet
             item = new ItemStack(Material.NETHERITE_HELMET, 1);
-            inv = player.getInventory();
             meta = item.getItemMeta();
             meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 10, true);
             meta.setUnbreakable(true);
@@ -102,7 +109,6 @@ public class PlayerHandler implements Listener {
 
             // Chestplate
             item = new ItemStack(Material.NETHERITE_CHESTPLATE, 1);
-            inv = player.getInventory();
             meta = item.getItemMeta();
             meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 10, true);
             meta.setUnbreakable(true);
@@ -112,7 +118,6 @@ public class PlayerHandler implements Listener {
 
             // Leggings
             item = new ItemStack(Material.NETHERITE_LEGGINGS, 1);
-            inv = player.getInventory();
             meta = item.getItemMeta();
             meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 10, true);
             meta.setUnbreakable(true);
@@ -122,7 +127,6 @@ public class PlayerHandler implements Listener {
 
             // Boots
             item = new ItemStack(Material.NETHERITE_BOOTS, 1);
-            inv = player.getInventory();
             meta = item.getItemMeta();
             meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 10, true);
             meta.setUnbreakable(true);
@@ -130,7 +134,11 @@ public class PlayerHandler implements Listener {
             item.setItemMeta(meta);
             inv.addItem(item);
         } else {
-            player.sendMessage("Welcome to the Insanity Prison Server!!!");
+            p.sendMessage("Welcome to the Insanity Prison Server!!!");
+            pp = players.get(id);
+            pp.setPickaxe(new PickaxeSuperBasic());
+            item = pp.getPickaxe().toItem();
+            inv.addItem(item);
         }
     }
 
@@ -150,5 +158,20 @@ public class PlayerHandler implements Listener {
         if (sellPrices.get(block.getType()) != null) {
             econ.depositPlayer(player, sellPrices.get(block.getType()) * (fortune + 1));
         }
+    }
+
+    @EventHandler
+    public void onPlayerUse(PlayerInteractEvent event) {
+        Player p = event.getPlayer();
+        PrisonPlayer pp = getPrisonPlayer(p);
+        if (event.getMaterial() == Material.NETHERITE_PICKAXE &&
+                (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK)) {
+            Menu menu = pp.getPickaxe().createMenu();
+            menu.open(p);
+        }
+    }
+
+    public PrisonPlayer getPrisonPlayer(Player p) {
+        return players.get(p.getUniqueId());
     }
 }

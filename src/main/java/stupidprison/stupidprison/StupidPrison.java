@@ -3,24 +3,19 @@ package stupidprison.stupidprison;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.command.Command;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.ipvp.canvas.MenuFunctionListener;
 import stupidprison.stupidprison.mines.CommandMineSetup;
-import stupidprison.stupidprison.mines.Mine;
-import stupidprison.stupidprison.mines.MineBuilder;
 import stupidprison.stupidprison.handlers.PlayerHandler;
 import stupidprison.stupidprison.handlers.TorchHandler;
-import stupidprison.stupidprison.mines.MineSetup;
 import stupidprison.stupidprison.util.Configuration;
 import stupidprison.stupidprison.util.DelayedTask;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static stupidprison.stupidprison.Globals.econ;
-import static stupidprison.stupidprison.Globals.materials;
+import static stupidprison.stupidprison.Globals.*;
 
 public class StupidPrison extends JavaPlugin {
 
@@ -30,7 +25,7 @@ public class StupidPrison extends JavaPlugin {
         // Plugin startup logic
         Bukkit.getLogger().info("hello world!!");
 
-        Globals.plugin = this;
+        plugin = this;
         Globals.world = getServer().getWorld("world");
 
         saveDefaultConfig();
@@ -80,6 +75,8 @@ public class StupidPrison extends JavaPlugin {
         new PlayerHandler(this);
 
         setupCommands();
+
+        Bukkit.getPluginManager().registerEvents(new MenuFunctionListener(), plugin);
     }
 
     @Override
